@@ -1,1 +1,6 @@
-<p>signup works!</p>
+<form (ngSubmit)="onSubmit(username.value, email.value, password.value)">
+    <input type="text" #username placeholder="Username">
+    <input type="email" #email placeholder="Email">
+    <input type="password" #password placeholder="Password">
+    <button type="submit">Sign Up</button>
+  </form>

@@ -1,6 +1,6 @@
-// login.component.ts
+
 import { Component } from '@angular/core';
-import { GraphqlService } from '../graphql.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,8 +8,19 @@ import { GraphqlService } from '../graphql.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  constructor(private graphqlService: GraphqlService) {}
+  constructor(private authService: AuthService) {}
 
-  // Implement login functionality using Apollo Client
+  onSubmit(username: string, password: string): void {
+    this.authService.login(username, password).subscribe(
+      (response) => {
+        // Handle successful login response
+        console.log('Login successful:', response);
+        // Redirect to another page or perform other actions upon successful login
+      },
+      (error) => {
+        // Handle login error
+        console.error('Login error:', error);
+      }
+    );
+  }
 }
-
